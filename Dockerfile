@@ -12,7 +12,7 @@ RUN wget https://github.com/instrumenta/kubeval/releases/download/0.15.0/kubeval
     mv kubeval /downloads/
 
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.19.4/bin/linux/amd64/kubectl /downloads/kubectl
-ADD https://github.com/zegl/kube-score/releases/download/v1.9.0/kube-score_1.9.0_linux_amd64 /downloads/kube-score
+ADD https://github.com/zegl/kube-score/releases/download/v1.10.1/kube-score_1.10.1_linux_amd64 /downloads/kube-score
 
 RUN chmod 755 /downloads/*
 
