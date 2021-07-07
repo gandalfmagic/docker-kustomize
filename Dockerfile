@@ -1,4 +1,4 @@
-# gandalfmagic/kustomize:3.8.6-2
+# gandalfmagic/kustomize:3.8.6-3
 FROM alpine:3.12.0 as build
 
 RUN apk --no-cache add wget && mkdir /downloads
@@ -10,6 +10,10 @@ RUN wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomiz
 RUN wget https://github.com/instrumenta/kubeval/releases/download/0.15.0/kubeval-linux-amd64.tar.gz 2>/dev/null && \
     tar xzvf kubeval-linux-amd64.tar.gz && rm *.tar.gz && \
     mv kubeval /downloads/
+
+RUN wget https://get.helm.sh/helm-v3.6.2-linux-amd64.tar.gz && \
+    tar xzvf helm-v3.6.2-linux-amd64.tar.gz && rm *.tar.gz && \
+    mv linux-amd64/helm /downloads/
 
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.19.4/bin/linux/amd64/kubectl /downloads/kubectl
 ADD https://github.com/zegl/kube-score/releases/download/v1.10.1/kube-score_1.10.1_linux_amd64 /downloads/kube-score
