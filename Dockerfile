@@ -15,6 +15,7 @@ RUN wget https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz 2>/dev/null && \
     tar xzvf helm-v3.7.0-linux-amd64.tar.gz && rm *.tar.gz && \
     mv linux-amd64/helm /downloads/
 
+# IMPORTANT: the version of kubectl must be maintained to be aligned with the server in use
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.21.5/bin/linux/amd64/kubectl /downloads/kubectl
 ADD https://github.com/zegl/kube-score/releases/download/v1.12.0/kube-score_1.12.0_linux_amd64 /downloads/kube-score
 
