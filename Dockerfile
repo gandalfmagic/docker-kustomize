@@ -1,19 +1,23 @@
-# gandalfmagic/kustomize:3.8.6-4
+# gandalfmagic/kustomize:3.8.6-5
 FROM alpine:3.13.6 as build
 
 RUN apk --no-cache add wget && mkdir /downloads
 
 RUN wget https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.6/kustomize_v3.8.6_linux_amd64.tar.gz 2>/dev/null && \
-    tar xzvf kustomize_v3.8.6_linux_amd64.tar.gz && rm *.tar.gz && \
+    tar xzf kustomize_v3.8.6_linux_amd64.tar.gz && rm *.tar.gz && \
     mv kustomize /downloads/
 
 RUN wget https://github.com/instrumenta/kubeval/releases/download/v0.16.1/kubeval-linux-amd64.tar.gz 2>/dev/null && \
-    tar xzvf kubeval-linux-amd64.tar.gz && rm *.tar.gz && \
+    tar xzf kubeval-linux-amd64.tar.gz && rm *.tar.gz && \
     mv kubeval /downloads/
 
-RUN wget https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz 2>/dev/null && \
-    tar xzvf helm-v3.7.0-linux-amd64.tar.gz && rm *.tar.gz && \
+RUN wget https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz 2>/dev/null && \
+    tar xzf helm-v3.7.1-linux-amd64.tar.gz && rm *.tar.gz && \
     mv linux-amd64/helm /downloads/
+
+RUN wget https://github.com/yannh/kubeconform/releases/download/v0.4.12/kubeconform-linux-amd64.tar.gz 2>/dev/null && \
+    tar xzf kubeconform-linux-amd64.tar.gz && rm *.tar.gz && \
+    mv kubeconform /downloads/
 
 # IMPORTANT: the version of kubectl must be maintained to be aligned with the server in use
 ADD https://storage.googleapis.com/kubernetes-release/release/v1.21.5/bin/linux/amd64/kubectl /downloads/kubectl
